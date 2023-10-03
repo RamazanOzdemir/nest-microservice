@@ -1,8 +1,11 @@
 import { Injectable } from '@nestjs/common';
+import { CreateUserDto, User } from '@nest-mono-repo/shared';
 
 @Injectable()
 export class AppService {
-  getData(): { message: string } {
-    return { message: 'Hello API' };
+  users: User[] = [];
+
+  signup(newUser: CreateUserDto) {
+    this.users.push();
   }
 }
