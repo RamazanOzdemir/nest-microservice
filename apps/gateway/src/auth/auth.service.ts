@@ -7,6 +7,10 @@ export class AuthService {
   constructor(@Inject('AUTH_SERVICE') private client: ClientProxy) {}
 
   signup(user: CreateUserDto) {
-    return this.client.emit<User>('signup', user);
+    console.log(user);
+    const pattern = {
+      cmd: 'signup',
+    };
+    return this.client.send<User>(pattern, user);
   }
 }

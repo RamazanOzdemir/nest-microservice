@@ -5,7 +5,11 @@ import { CreateUserDto, User } from '@nest-mono-repo/shared';
 export class AppService {
   users: User[] = [];
 
-  signup(newUser: CreateUserDto) {
-    this.users.push({ id: Date.now(), ...newUser });
+  signup(newUserData: CreateUserDto) {
+    const newUser = { id: Date.now(), ...newUserData };
+    this.users.push(newUser);
+    console.log(this.users);
+
+    return newUser;
   }
 }

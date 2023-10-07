@@ -10,6 +10,7 @@ export class AppController {
 
   @MessagePattern({ cmd: 'signup' })
   signup(@Body() user: CreateUserDto) {
+    console.log(user);
     return this.appService.signup(user);
   }
 }
