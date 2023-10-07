@@ -1,13 +1,15 @@
-import { Controller, Get } from '@nestjs/common';
+import { Body, Controller } from '@nestjs/common';
 
 import { AppService } from './app.service';
+import { CreateUserDto } from '@nest-mono-repo/shared';
+import { MessagePattern } from '@nestjs/microservices';
 
 @Controller()
 export class AppController {
   constructor(private readonly appService: AppService) {}
 
-  @Get()
-  getData() {
-    return this.appService.getData();
+  @MessagePattern({ cmd: 'signup' })
+  signup(@Body() user: CreateUserDto) {
+    return this.appService.signup(user);
   }
 }

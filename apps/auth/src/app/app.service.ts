@@ -6,6 +6,6 @@ export class AppService {
   users: User[] = [];
 
   signup(newUser: CreateUserDto) {
-    this.users.push();
+    this.users.push({ id: Date.now(), ...newUser });
   }
 }
